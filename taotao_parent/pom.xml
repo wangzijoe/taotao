@@ -33,6 +33,7 @@
         <commons-fileupload.version>1.3.1</commons-fileupload.version>
         <jedis.version>2.7.2</jedis.version>
         <solrj.version>4.10.3</solrj.version>
+        <jsch.version>0.1.54</jsch.version>
     </properties>
 
     <!-- dependencyManagement标签 只定义依赖的版本，并不实际依赖 -->
@@ -179,6 +180,12 @@
                 <groupId>org.apache.solr</groupId>
                 <artifactId>solr-solrj</artifactId>
                 <version>${solrj.version}</version>
+            </dependency>
+            <!-- SFTP -->
+            <dependency>
+                <groupId>com.jcraft</groupId>
+                <artifactId>jsch</artifactId>
+                <version>${jsch.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
