@@ -41,7 +41,7 @@ public class PictureServiceImpl implements PictureService {
 
 	@Override
 	public Map uploadPicture(MultipartFile uploadFile) {
-		Map resultMap = new HashMap<>();
+		Map<String, Object> resultMap = new HashMap<>();
 		try {
 			//生成一个新的文件名
 			//取原始文件名
