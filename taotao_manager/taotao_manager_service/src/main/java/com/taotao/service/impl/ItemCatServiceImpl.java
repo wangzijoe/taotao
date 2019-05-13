@@ -15,11 +15,6 @@ import com.taotao.service.ItemCatService;
 
 /**
  * 商品分类管理
- * <p>Title: ItemCatServiceImpl</p>
- * <p>Description: </p>
- * <p>Company: www.itcast.com</p> 
- * @author	入云龙
- * @date	2015年9月4日上午9:16:50
  * @version 1.0
  */
 @Service

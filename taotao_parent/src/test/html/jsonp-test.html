@@ -1,0 +1,24 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>JSONP de 简单实例</title>
+</head>
+<body>
+
+</body>
+<script src="http://localhost:8082/js/jquery-1.6.4.js"></script>
+<script type="text/javascript">
+
+    $.ajax({
+        url: "http://localhost:8081/rest/itemcat/list",
+        type: "GET",
+        dataType: "jsonp",
+        success: function (data) {
+            var result = JSON.stringify(data); //json对象转成字符串
+            console.log(result);
+            document.write(result);
+        }
+    });
+
+</script>
+</html>
