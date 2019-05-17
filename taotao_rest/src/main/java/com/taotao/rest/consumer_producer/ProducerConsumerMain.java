@@ -1,5 +1,9 @@
 package com.taotao.rest.consumer_producer;
 
+import org.apache.commons.io.FileUtils;
+
+import java.io.File;
+import java.net.URL;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -35,20 +39,24 @@ public class ProducerConsumerMain {
 
 
     public static void main(String[] args) {
-
+        URL resource = ProducerConsumerMain.class.getClassLoader().getResource("");
+        File consumerLog = new File(resource.getPath(), "Consumer.log");
+        File producerLog = new File(resource.getPath(), "Producer.log");
         Storage s = new Storage();
 
         ExecutorService service = Executors.newCachedThreadPool();
-        Producer p1 = new Producer("张三", s);
-        Producer p2 = new Producer("李四", s);
-        Consumer c1 = new Consumer("王五", s);
-        Consumer c2 = new Consumer("老刘", s);
-        Consumer c3 = new Consumer("老林", s);
+        Producer p1 = new Producer("张三", s, producerLog);
+        Producer p2 = new Producer("李四", s, producerLog);
+        Consumer c1 = new Consumer("王五", s, consumerLog);
+        Consumer c2 = new Consumer("老刘", s, consumerLog);
+        Consumer c3 = new Consumer("老林", s, consumerLog);
         service.submit(p1);
         service.submit(p2);
         service.submit(c1);
         service.submit(c2);
         service.submit(c3);
+
+
 
     }
 

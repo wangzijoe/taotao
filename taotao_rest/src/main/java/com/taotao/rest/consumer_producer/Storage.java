@@ -7,9 +7,9 @@ package com.taotao.rest.consumer_producer;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class Storage {
+class Storage {
 
-    BlockingQueue<Product> queues = new LinkedBlockingQueue<Product>(10);
+    private BlockingQueue<Product> queues = new LinkedBlockingQueue<>(10);
 
     /**
      * 生产
@@ -18,7 +18,7 @@ public class Storage {
      *            产品
      * @throws InterruptedException
      */
-    public void push(Product p) throws InterruptedException {
+    void push(Product p) throws InterruptedException {
         queues.put(p);
     }
 
@@ -28,7 +28,7 @@ public class Storage {
      * @return 产品
      * @throws InterruptedException
      */
-    public Product pop() throws InterruptedException {
+    Product pop() throws InterruptedException {
         return queues.take();
     }
 }
