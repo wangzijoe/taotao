@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:websocket="http://www.springframework.org/schema/websocket"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+            http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+            http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd">
+
+
+    <context:annotation-config />
+    <!-- 配置好WebSocket处理器 -->
+    <bean id="webSocketHandler" class="com.taotao.freeStudio.socket.handler.TWebSocketHandler"/>
+
+    <!-- 配置WebSocket拦截器 -->
+    <websocket:handlers>
+        <websocket:mapping handler="webSocketHandler" path="/webSocket/*"/><!-- 连接的URL -->
+        <websocket:handshake-interceptors>
+            <bean class="com.taotao.freeStudio.socket.intercepter.TWebSocketHandshakeInterceptor"/>
+        </websocket:handshake-interceptors>
+    </websocket:handlers>
+</beans>
