@@ -9,19 +9,20 @@ import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
+import java.util.Set;
+import java.util.concurrent.ConcurrentSkipListSet;
 
 @Component
 @Getter
 public class TWebSocketHandler extends TextWebSocketHandler {
 
-    private List<WebSocketSession> SESSIONS = new ArrayList<>();
+    private Set<WebSocketSession> sessions = new LinkedHashSet<>();
 
     //连接已建立
     public void afterConnectionEstablished(WebSocketSession session)
             throws Exception {
-        SESSIONS.add(session);
+        sessions.add(session);
     }
 
     //消息接收处理
@@ -33,7 +34,7 @@ public class TWebSocketHandler extends TextWebSocketHandler {
     //连接已关闭
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status)
             throws Exception {
-        SESSIONS.remove(session);
+        sessions.remove(session);
     }
 
 
@@ -41,7 +42,7 @@ public class TWebSocketHandler extends TextWebSocketHandler {
     public void handleTransportError(WebSocketSession session, Throwable e)
             throws Exception {
         if(session.isOpen()) session.close();
-        SESSIONS.remove(session);
+        sessions.remove(session);
     }
 
     public boolean supportsPartialMessages() {
@@ -55,7 +56,7 @@ public class TWebSocketHandler extends TextWebSocketHandler {
      * @throws IOException
      */
     public void sendMessageToUsers(TextMessage message) throws IOException {
-        for (WebSocketSession user : SESSIONS) {
+        for (WebSocketSession user : sessions) {
             if (user.isOpen()) user.sendMessage(message);
         }
     }
