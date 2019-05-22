@@ -1,5 +1,6 @@
 package com.taotao.freeStudio.socket.intercepter;
 
+import com.taotao.freeStudio.socket.constant.Constants;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.http.server.ServletServerHttpRequest;
@@ -27,8 +28,8 @@ public class TWebSocketHandshakeInterceptor extends HttpSessionHandshakeIntercep
         HttpServletRequest servletRequest = ((ServletServerHttpRequest) request).getServletRequest();
         String id = servletRequest.getSession().getId();
         System.out.println("beforeHandshake: \n" + id);
-        String jspSessionId = servletRequest.getParameter("jspSessionId");
-        attributes.put("jspSessionId", jspSessionId);
+        String jspSessionId = servletRequest.getParameter(Constants.JSP_SESSION_ID);
+        attributes.put(Constants.JSP_SESSION_ID, jspSessionId);
         return super.beforeHandshake(request, response, wsHandler, attributes);
     }
 
