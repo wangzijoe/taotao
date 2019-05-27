@@ -9,6 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>../taotao_sso</module>
+        <module>../taotao_order</module>
     </modules>
     <packaging>pom</packaging>
 
