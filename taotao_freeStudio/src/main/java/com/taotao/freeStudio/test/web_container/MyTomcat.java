@@ -44,14 +44,17 @@ public class MyTomcat {
         ServerSocket serverSocket = null;
         try {
             serverSocket = new ServerSocket(port);
-            Socket accept = serverSocket.accept();
-            InputStream inputStream = accept.getInputStream();
+            while (true) {
+                Socket accept = serverSocket.accept();
+                InputStream inputStream = accept.getInputStream();
 
-            OutputStream outputStream = accept.getOutputStream();
+                OutputStream outputStream = accept.getOutputStream();
 
-            MyRequest myRequest = new MyRequest(inputStream);
-            MyResponse myResponse = new MyResponse(outputStream);
-            dispatch(myRequest, myResponse);
+                MyRequest myRequest = new MyRequest(inputStream);
+                MyResponse myResponse = new MyResponse(outputStream);
+                dispatch(myRequest, myResponse);
+                if (Integer.parseInt("1") < 0) return;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
