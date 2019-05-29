@@ -1,0 +1,9 @@
+com\taotao\freeStudio\service\consumer_producer\IntegerProducer.class
+com\taotao\freeStudio\socket\constant\Constants.class
+com\taotao\freeStudio\controller\consumer_producer\ConsumerProducerController.class
+com\taotao\freeStudio\controller\home\HomeController.class
+com\taotao\freeStudio\socket\intercepter\TWebSocketHandshakeInterceptor.class
+com\taotao\freeStudio\service\consumer_producer\IntegerConsumer.class
+com\taotao\freeStudio\socket\handler\TWebSocketHandler.class
+com\taotao\freeStudio\service\consumer_producer\IntegerStorage.class
+com\taotao\freeStudio\socket\config\TWebSocketConfig.class
